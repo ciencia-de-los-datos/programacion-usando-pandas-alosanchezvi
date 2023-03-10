@@ -186,7 +186,7 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return tbl1.sort_values('_c4').groupby('_c0').agg({'_c4': lambda x: ','.join(str(i) for i in x)})
+    return tbl1.sort_values('_c4').groupby('_c0').agg({'_c4': lambda x: ','.join(str(i) for i in x)}).reset_index()
 
 
 def pregunta_12():
@@ -204,7 +204,8 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return tbl2.sort_values('_c5').groupby('_c0').agg({'_c5': lambda x: ','.join(str(i) for i in x)})
+    tbl2['_c5']=tbl2.apply(lambda x: x['_c5a']+':'+str(x['_c5b']), axis=1)
+    return tbl2.sort_values('_c5').groupby('_c0').agg({'_c5': lambda x: ','.join(str(i) for i in x)}).reset_index()
 
 
 def pregunta_13():
