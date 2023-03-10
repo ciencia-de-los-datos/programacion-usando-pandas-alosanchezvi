@@ -149,7 +149,7 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    tbl0['year']=tbl0.apply(lambda x: x['_c3'].dt.year ,axis=1)
+    tbl0['year']=tbl0.apply(lambda x: pd.to_datetime(x['_c3']).dt.year ,axis=1)
     return tbl0
 
 
